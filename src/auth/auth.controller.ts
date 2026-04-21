@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Get,
   HttpCode,
   HttpStatus,
   Post,
@@ -9,6 +10,8 @@ import {
 } from "@nestjs/common";
 import type { Request, Response } from "express";
 import { AuthService } from "./auth.service";
+import { Authorization } from "./decorators/authorization.decorator";
+import { Authorized } from "./decorators/authorized.decorator";
 import { LoginRequest } from "./dto/login.dto";
 import { RegisterRequest } from "./dto/register.dto";
 
@@ -56,5 +59,11 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   async logout(@Res({ passthrough: true }) res: Response) {
     return this.authService.logout(res);
+  }
+
+  @Authorization()
+  @Get("@me")
+  async me(@Authorized("id") id: string) {
+    return this.authService.me(id);
   }
 }
