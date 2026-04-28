@@ -8,6 +8,10 @@ model User {
 
     role        Role    @default(USER)
 
+    files       File[]
+    posts       Post[]
+    lectures    Lecture[]
+    
     createdAt   DateTime @default(now()) @map("created_at")
     updatedAt   DateTime @updatedAt @map("updated_at")
     @@map("users")

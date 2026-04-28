@@ -29,8 +29,8 @@ export * from "./enums.js"
  * const prisma = new PrismaClient({
  *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
  * })
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * // Fetch zero or more Files
+ * const files = await prisma.file.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -39,6 +39,51 @@ export const PrismaClient = $Class.getPrismaClientClass()
 export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts extends Prisma.PrismaClientOptions["omit"] = Prisma.PrismaClientOptions["omit"], ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = $Class.PrismaClient<LogOpts, OmitOpts, ExtArgs>
 export { Prisma }
 
+/**
+ * Model File
+ * 
+ */
+export type File = Prisma.FileModel
+/**
+ * Model Lecture
+ * 
+ */
+export type Lecture = Prisma.LectureModel
+/**
+ * Model LectureFile
+ * 
+ */
+export type LectureFile = Prisma.LectureFileModel
+/**
+ * Model LecturePost
+ * 
+ */
+export type LecturePost = Prisma.LecturePostModel
+/**
+ * Model Post
+ * 
+ */
+export type Post = Prisma.PostModel
+/**
+ * Model PostFile
+ * 
+ */
+export type PostFile = Prisma.PostFileModel
+/**
+ * Model Tag
+ * 
+ */
+export type Tag = Prisma.TagModel
+/**
+ * Model PostTag
+ * 
+ */
+export type PostTag = Prisma.PostTagModel
+/**
+ * Model LectureTag
+ * 
+ */
+export type LectureTag = Prisma.LectureTagModel
 /**
  * Model User
  * 

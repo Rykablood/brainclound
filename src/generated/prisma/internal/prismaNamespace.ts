@@ -384,6 +384,15 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
+  File: 'File',
+  Lecture: 'Lecture',
+  LectureFile: 'LectureFile',
+  LecturePost: 'LecturePost',
+  Post: 'Post',
+  PostFile: 'PostFile',
+  Tag: 'Tag',
+  PostTag: 'PostTag',
+  LectureTag: 'LectureTag',
   User: 'User'
 } as const
 
@@ -400,10 +409,604 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user"
+    modelProps: "file" | "lecture" | "lectureFile" | "lecturePost" | "post" | "postFile" | "tag" | "postTag" | "lectureTag" | "user"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
+    File: {
+      payload: Prisma.$FilePayload<ExtArgs>
+      fields: Prisma.FileFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.FileFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FilePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.FileFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FilePayload>
+        }
+        findFirst: {
+          args: Prisma.FileFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FilePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.FileFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FilePayload>
+        }
+        findMany: {
+          args: Prisma.FileFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FilePayload>[]
+        }
+        create: {
+          args: Prisma.FileCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FilePayload>
+        }
+        createMany: {
+          args: Prisma.FileCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.FileDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FilePayload>
+        }
+        update: {
+          args: Prisma.FileUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FilePayload>
+        }
+        deleteMany: {
+          args: Prisma.FileDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.FileUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.FileUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FilePayload>
+        }
+        aggregate: {
+          args: Prisma.FileAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateFile>
+        }
+        groupBy: {
+          args: Prisma.FileGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.FileGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.FileCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.FileCountAggregateOutputType> | number
+        }
+      }
+    }
+    Lecture: {
+      payload: Prisma.$LecturePayload<ExtArgs>
+      fields: Prisma.LectureFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.LectureFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LecturePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.LectureFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LecturePayload>
+        }
+        findFirst: {
+          args: Prisma.LectureFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LecturePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.LectureFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LecturePayload>
+        }
+        findMany: {
+          args: Prisma.LectureFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LecturePayload>[]
+        }
+        create: {
+          args: Prisma.LectureCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LecturePayload>
+        }
+        createMany: {
+          args: Prisma.LectureCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.LectureDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LecturePayload>
+        }
+        update: {
+          args: Prisma.LectureUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LecturePayload>
+        }
+        deleteMany: {
+          args: Prisma.LectureDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.LectureUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.LectureUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LecturePayload>
+        }
+        aggregate: {
+          args: Prisma.LectureAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLecture>
+        }
+        groupBy: {
+          args: Prisma.LectureGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LectureGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.LectureCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LectureCountAggregateOutputType> | number
+        }
+      }
+    }
+    LectureFile: {
+      payload: Prisma.$LectureFilePayload<ExtArgs>
+      fields: Prisma.LectureFileFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.LectureFileFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LectureFilePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.LectureFileFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LectureFilePayload>
+        }
+        findFirst: {
+          args: Prisma.LectureFileFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LectureFilePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.LectureFileFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LectureFilePayload>
+        }
+        findMany: {
+          args: Prisma.LectureFileFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LectureFilePayload>[]
+        }
+        create: {
+          args: Prisma.LectureFileCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LectureFilePayload>
+        }
+        createMany: {
+          args: Prisma.LectureFileCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.LectureFileDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LectureFilePayload>
+        }
+        update: {
+          args: Prisma.LectureFileUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LectureFilePayload>
+        }
+        deleteMany: {
+          args: Prisma.LectureFileDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.LectureFileUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.LectureFileUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LectureFilePayload>
+        }
+        aggregate: {
+          args: Prisma.LectureFileAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLectureFile>
+        }
+        groupBy: {
+          args: Prisma.LectureFileGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LectureFileGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.LectureFileCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LectureFileCountAggregateOutputType> | number
+        }
+      }
+    }
+    LecturePost: {
+      payload: Prisma.$LecturePostPayload<ExtArgs>
+      fields: Prisma.LecturePostFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.LecturePostFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LecturePostPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.LecturePostFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LecturePostPayload>
+        }
+        findFirst: {
+          args: Prisma.LecturePostFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LecturePostPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.LecturePostFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LecturePostPayload>
+        }
+        findMany: {
+          args: Prisma.LecturePostFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LecturePostPayload>[]
+        }
+        create: {
+          args: Prisma.LecturePostCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LecturePostPayload>
+        }
+        createMany: {
+          args: Prisma.LecturePostCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.LecturePostDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LecturePostPayload>
+        }
+        update: {
+          args: Prisma.LecturePostUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LecturePostPayload>
+        }
+        deleteMany: {
+          args: Prisma.LecturePostDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.LecturePostUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.LecturePostUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LecturePostPayload>
+        }
+        aggregate: {
+          args: Prisma.LecturePostAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLecturePost>
+        }
+        groupBy: {
+          args: Prisma.LecturePostGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LecturePostGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.LecturePostCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LecturePostCountAggregateOutputType> | number
+        }
+      }
+    }
+    Post: {
+      payload: Prisma.$PostPayload<ExtArgs>
+      fields: Prisma.PostFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PostFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PostFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostPayload>
+        }
+        findFirst: {
+          args: Prisma.PostFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PostFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostPayload>
+        }
+        findMany: {
+          args: Prisma.PostFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostPayload>[]
+        }
+        create: {
+          args: Prisma.PostCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostPayload>
+        }
+        createMany: {
+          args: Prisma.PostCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.PostDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostPayload>
+        }
+        update: {
+          args: Prisma.PostUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostPayload>
+        }
+        deleteMany: {
+          args: Prisma.PostDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PostUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.PostUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostPayload>
+        }
+        aggregate: {
+          args: Prisma.PostAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePost>
+        }
+        groupBy: {
+          args: Prisma.PostGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PostGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PostCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PostCountAggregateOutputType> | number
+        }
+      }
+    }
+    PostFile: {
+      payload: Prisma.$PostFilePayload<ExtArgs>
+      fields: Prisma.PostFileFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PostFileFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostFilePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PostFileFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostFilePayload>
+        }
+        findFirst: {
+          args: Prisma.PostFileFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostFilePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PostFileFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostFilePayload>
+        }
+        findMany: {
+          args: Prisma.PostFileFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostFilePayload>[]
+        }
+        create: {
+          args: Prisma.PostFileCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostFilePayload>
+        }
+        createMany: {
+          args: Prisma.PostFileCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.PostFileDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostFilePayload>
+        }
+        update: {
+          args: Prisma.PostFileUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostFilePayload>
+        }
+        deleteMany: {
+          args: Prisma.PostFileDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PostFileUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.PostFileUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostFilePayload>
+        }
+        aggregate: {
+          args: Prisma.PostFileAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePostFile>
+        }
+        groupBy: {
+          args: Prisma.PostFileGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PostFileGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PostFileCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PostFileCountAggregateOutputType> | number
+        }
+      }
+    }
+    Tag: {
+      payload: Prisma.$TagPayload<ExtArgs>
+      fields: Prisma.TagFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.TagFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TagPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.TagFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TagPayload>
+        }
+        findFirst: {
+          args: Prisma.TagFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TagPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.TagFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TagPayload>
+        }
+        findMany: {
+          args: Prisma.TagFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TagPayload>[]
+        }
+        create: {
+          args: Prisma.TagCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TagPayload>
+        }
+        createMany: {
+          args: Prisma.TagCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.TagDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TagPayload>
+        }
+        update: {
+          args: Prisma.TagUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TagPayload>
+        }
+        deleteMany: {
+          args: Prisma.TagDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.TagUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.TagUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TagPayload>
+        }
+        aggregate: {
+          args: Prisma.TagAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateTag>
+        }
+        groupBy: {
+          args: Prisma.TagGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TagGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.TagCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TagCountAggregateOutputType> | number
+        }
+      }
+    }
+    PostTag: {
+      payload: Prisma.$PostTagPayload<ExtArgs>
+      fields: Prisma.PostTagFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PostTagFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostTagPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PostTagFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostTagPayload>
+        }
+        findFirst: {
+          args: Prisma.PostTagFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostTagPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PostTagFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostTagPayload>
+        }
+        findMany: {
+          args: Prisma.PostTagFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostTagPayload>[]
+        }
+        create: {
+          args: Prisma.PostTagCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostTagPayload>
+        }
+        createMany: {
+          args: Prisma.PostTagCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.PostTagDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostTagPayload>
+        }
+        update: {
+          args: Prisma.PostTagUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostTagPayload>
+        }
+        deleteMany: {
+          args: Prisma.PostTagDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PostTagUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.PostTagUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostTagPayload>
+        }
+        aggregate: {
+          args: Prisma.PostTagAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePostTag>
+        }
+        groupBy: {
+          args: Prisma.PostTagGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PostTagGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PostTagCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PostTagCountAggregateOutputType> | number
+        }
+      }
+    }
+    LectureTag: {
+      payload: Prisma.$LectureTagPayload<ExtArgs>
+      fields: Prisma.LectureTagFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.LectureTagFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LectureTagPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.LectureTagFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LectureTagPayload>
+        }
+        findFirst: {
+          args: Prisma.LectureTagFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LectureTagPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.LectureTagFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LectureTagPayload>
+        }
+        findMany: {
+          args: Prisma.LectureTagFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LectureTagPayload>[]
+        }
+        create: {
+          args: Prisma.LectureTagCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LectureTagPayload>
+        }
+        createMany: {
+          args: Prisma.LectureTagCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.LectureTagDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LectureTagPayload>
+        }
+        update: {
+          args: Prisma.LectureTagUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LectureTagPayload>
+        }
+        deleteMany: {
+          args: Prisma.LectureTagDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.LectureTagUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.LectureTagUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LectureTagPayload>
+        }
+        aggregate: {
+          args: Prisma.LectureTagAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLectureTag>
+        }
+        groupBy: {
+          args: Prisma.LectureTagGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LectureTagGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.LectureTagCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LectureTagCountAggregateOutputType> | number
+        }
+      }
+    }
     User: {
       payload: Prisma.$UserPayload<ExtArgs>
       fields: Prisma.UserFieldRefs
@@ -509,6 +1112,103 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const FileScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  mimeType: 'mimeType',
+  originalName: 'originalName',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type FileScalarFieldEnum = (typeof FileScalarFieldEnum)[keyof typeof FileScalarFieldEnum]
+
+
+export const LectureScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  text: 'text',
+  preview: 'preview',
+  userId: 'userId',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LectureScalarFieldEnum = (typeof LectureScalarFieldEnum)[keyof typeof LectureScalarFieldEnum]
+
+
+export const LectureFileScalarFieldEnum = {
+  id: 'id',
+  lectureId: 'lectureId',
+  fileId: 'fileId',
+  sortOrder: 'sortOrder'
+} as const
+
+export type LectureFileScalarFieldEnum = (typeof LectureFileScalarFieldEnum)[keyof typeof LectureFileScalarFieldEnum]
+
+
+export const LecturePostScalarFieldEnum = {
+  id: 'id',
+  lectureId: 'lectureId',
+  postId: 'postId',
+  sortOrder: 'sortOrder'
+} as const
+
+export type LecturePostScalarFieldEnum = (typeof LecturePostScalarFieldEnum)[keyof typeof LecturePostScalarFieldEnum]
+
+
+export const PostScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  text: 'text',
+  userId: 'userId',
+  status: 'status'
+} as const
+
+export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]
+
+
+export const PostFileScalarFieldEnum = {
+  id: 'id',
+  postId: 'postId',
+  fileId: 'fileId',
+  sortOrder: 'sortOrder'
+} as const
+
+export type PostFileScalarFieldEnum = (typeof PostFileScalarFieldEnum)[keyof typeof PostFileScalarFieldEnum]
+
+
+export const TagScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TagScalarFieldEnum = (typeof TagScalarFieldEnum)[keyof typeof TagScalarFieldEnum]
+
+
+export const PostTagScalarFieldEnum = {
+  id: 'id',
+  postId: 'postId',
+  tagId: 'tagId'
+} as const
+
+export type PostTagScalarFieldEnum = (typeof PostTagScalarFieldEnum)[keyof typeof PostTagScalarFieldEnum]
+
+
+export const LectureTagScalarFieldEnum = {
+  id: 'id',
+  lectureId: 'lectureId',
+  tagId: 'tagId'
+} as const
+
+export type LectureTagScalarFieldEnum = (typeof LectureTagScalarFieldEnum)[keyof typeof LectureTagScalarFieldEnum]
+
+
 export const UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -529,6 +1229,100 @@ export const SortOrder = {
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const FileOrderByRelevanceFieldEnum = {
+  id: 'id',
+  url: 'url',
+  mimeType: 'mimeType',
+  originalName: 'originalName',
+  userId: 'userId'
+} as const
+
+export type FileOrderByRelevanceFieldEnum = (typeof FileOrderByRelevanceFieldEnum)[keyof typeof FileOrderByRelevanceFieldEnum]
+
+
+export const LectureOrderByRelevanceFieldEnum = {
+  id: 'id',
+  title: 'title',
+  text: 'text',
+  preview: 'preview',
+  userId: 'userId'
+} as const
+
+export type LectureOrderByRelevanceFieldEnum = (typeof LectureOrderByRelevanceFieldEnum)[keyof typeof LectureOrderByRelevanceFieldEnum]
+
+
+export const LectureFileOrderByRelevanceFieldEnum = {
+  id: 'id',
+  lectureId: 'lectureId',
+  fileId: 'fileId'
+} as const
+
+export type LectureFileOrderByRelevanceFieldEnum = (typeof LectureFileOrderByRelevanceFieldEnum)[keyof typeof LectureFileOrderByRelevanceFieldEnum]
+
+
+export const LecturePostOrderByRelevanceFieldEnum = {
+  id: 'id',
+  lectureId: 'lectureId',
+  postId: 'postId'
+} as const
+
+export type LecturePostOrderByRelevanceFieldEnum = (typeof LecturePostOrderByRelevanceFieldEnum)[keyof typeof LecturePostOrderByRelevanceFieldEnum]
+
+
+export const PostOrderByRelevanceFieldEnum = {
+  id: 'id',
+  title: 'title',
+  text: 'text',
+  userId: 'userId'
+} as const
+
+export type PostOrderByRelevanceFieldEnum = (typeof PostOrderByRelevanceFieldEnum)[keyof typeof PostOrderByRelevanceFieldEnum]
+
+
+export const PostFileOrderByRelevanceFieldEnum = {
+  id: 'id',
+  postId: 'postId',
+  fileId: 'fileId'
+} as const
+
+export type PostFileOrderByRelevanceFieldEnum = (typeof PostFileOrderByRelevanceFieldEnum)[keyof typeof PostFileOrderByRelevanceFieldEnum]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const TagOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description'
+} as const
+
+export type TagOrderByRelevanceFieldEnum = (typeof TagOrderByRelevanceFieldEnum)[keyof typeof TagOrderByRelevanceFieldEnum]
+
+
+export const PostTagOrderByRelevanceFieldEnum = {
+  id: 'id',
+  postId: 'postId',
+  tagId: 'tagId'
+} as const
+
+export type PostTagOrderByRelevanceFieldEnum = (typeof PostTagOrderByRelevanceFieldEnum)[keyof typeof PostTagOrderByRelevanceFieldEnum]
+
+
+export const LectureTagOrderByRelevanceFieldEnum = {
+  id: 'id',
+  lectureId: 'lectureId',
+  tagId: 'tagId'
+} as const
+
+export type LectureTagOrderByRelevanceFieldEnum = (typeof LectureTagOrderByRelevanceFieldEnum)[keyof typeof LectureTagOrderByRelevanceFieldEnum]
 
 
 export const UserOrderByRelevanceFieldEnum = {
@@ -556,13 +1350,6 @@ export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
 
 
 /**
- * Reference to a field of type 'Role'
- */
-export type EnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role'>
-    
-
-
-/**
  * Reference to a field of type 'DateTime'
  */
 export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -570,9 +1357,30 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel
 
 
 /**
+ * Reference to a field of type 'Status'
+ */
+export type EnumStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Status'>
+    
+
+
+/**
  * Reference to a field of type 'Int'
  */
 export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+/**
+ * Reference to a field of type 'Role'
+ */
+export type EnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role'>
+    
+
+
+/**
+ * Reference to a field of type 'Float'
+ */
+export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
     
 
 /**
@@ -670,6 +1478,15 @@ export type PrismaClientOptions = ({
   comments?: runtime.SqlCommenterPlugin[]
 }
 export type GlobalOmitConfig = {
+  file?: Prisma.FileOmit
+  lecture?: Prisma.LectureOmit
+  lectureFile?: Prisma.LectureFileOmit
+  lecturePost?: Prisma.LecturePostOmit
+  post?: Prisma.PostOmit
+  postFile?: Prisma.PostFileOmit
+  tag?: Prisma.TagOmit
+  postTag?: Prisma.PostTagOmit
+  lectureTag?: Prisma.LectureTagOmit
   user?: Prisma.UserOmit
 }
 

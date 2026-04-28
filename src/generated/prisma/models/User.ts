@@ -206,6 +206,9 @@ export type UserWhereInput = {
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  files?: Prisma.FileListRelationFilter
+  posts?: Prisma.PostListRelationFilter
+  lectures?: Prisma.LectureListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -217,6 +220,9 @@ export type UserOrderByWithRelationInput = {
   role?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  files?: Prisma.FileOrderByRelationAggregateInput
+  posts?: Prisma.PostOrderByRelationAggregateInput
+  lectures?: Prisma.LectureOrderByRelationAggregateInput
   _relevance?: Prisma.UserOrderByRelevanceInput
 }
 
@@ -232,6 +238,9 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  files?: Prisma.FileListRelationFilter
+  posts?: Prisma.PostListRelationFilter
+  lectures?: Prisma.LectureListRelationFilter
 }, "id" | "email" | "username">
 
 export type UserOrderByWithAggregationInput = {
@@ -271,6 +280,9 @@ export type UserCreateInput = {
   role?: $Enums.Role
   createdAt?: Date | string
   updatedAt?: Date | string
+  files?: Prisma.FileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  lectures?: Prisma.LectureCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -282,6 +294,9 @@ export type UserUncheckedCreateInput = {
   role?: $Enums.Role
   createdAt?: Date | string
   updatedAt?: Date | string
+  files?: Prisma.FileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  lectures?: Prisma.LectureUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -293,6 +308,9 @@ export type UserUpdateInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  files?: Prisma.FileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  lectures?: Prisma.LectureUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -304,6 +322,9 @@ export type UserUncheckedUpdateInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  files?: Prisma.FileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  lectures?: Prisma.LectureUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -337,6 +358,11 @@ export type UserUncheckedUpdateManyInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type UserScalarRelationFilter = {
+  is?: Prisma.UserWhereInput
+  isNot?: Prisma.UserWhereInput
 }
 
 export type UserOrderByRelevanceInput = {
@@ -378,18 +404,303 @@ export type UserMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
 }
 
-export type StringFieldUpdateOperationsInput = {
-  set?: string
+export type UserCreateNestedOneWithoutFilesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutFilesInput, Prisma.UserUncheckedCreateWithoutFilesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFilesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutFilesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutFilesInput, Prisma.UserUncheckedCreateWithoutFilesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFilesInput
+  upsert?: Prisma.UserUpsertWithoutFilesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutFilesInput, Prisma.UserUpdateWithoutFilesInput>, Prisma.UserUncheckedUpdateWithoutFilesInput>
+}
+
+export type UserCreateNestedOneWithoutLecturesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLecturesInput, Prisma.UserUncheckedCreateWithoutLecturesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLecturesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutLecturesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLecturesInput, Prisma.UserUncheckedCreateWithoutLecturesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLecturesInput
+  upsert?: Prisma.UserUpsertWithoutLecturesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutLecturesInput, Prisma.UserUpdateWithoutLecturesInput>, Prisma.UserUncheckedUpdateWithoutLecturesInput>
+}
+
+export type UserCreateNestedOneWithoutPostsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPostsInput, Prisma.UserUncheckedCreateWithoutPostsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPostsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutPostsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPostsInput, Prisma.UserUncheckedCreateWithoutPostsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPostsInput
+  upsert?: Prisma.UserUpsertWithoutPostsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPostsInput, Prisma.UserUpdateWithoutPostsInput>, Prisma.UserUncheckedUpdateWithoutPostsInput>
 }
 
 export type EnumRoleFieldUpdateOperationsInput = {
   set?: $Enums.Role
 }
 
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
+export type UserCreateWithoutFilesInput = {
+  id?: string
+  name: string
+  email: string
+  username: string
+  password: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  lectures?: Prisma.LectureCreateNestedManyWithoutUserInput
 }
 
+export type UserUncheckedCreateWithoutFilesInput = {
+  id?: string
+  name: string
+  email: string
+  username: string
+  password: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  lectures?: Prisma.LectureUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutFilesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutFilesInput, Prisma.UserUncheckedCreateWithoutFilesInput>
+}
+
+export type UserUpsertWithoutFilesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutFilesInput, Prisma.UserUncheckedUpdateWithoutFilesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutFilesInput, Prisma.UserUncheckedCreateWithoutFilesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutFilesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutFilesInput, Prisma.UserUncheckedUpdateWithoutFilesInput>
+}
+
+export type UserUpdateWithoutFilesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  lectures?: Prisma.LectureUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutFilesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  lectures?: Prisma.LectureUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutLecturesInput = {
+  id?: string
+  name: string
+  email: string
+  username: string
+  password: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  files?: Prisma.FileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutLecturesInput = {
+  id?: string
+  name: string
+  email: string
+  username: string
+  password: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  files?: Prisma.FileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutLecturesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutLecturesInput, Prisma.UserUncheckedCreateWithoutLecturesInput>
+}
+
+export type UserUpsertWithoutLecturesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutLecturesInput, Prisma.UserUncheckedUpdateWithoutLecturesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutLecturesInput, Prisma.UserUncheckedCreateWithoutLecturesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutLecturesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutLecturesInput, Prisma.UserUncheckedUpdateWithoutLecturesInput>
+}
+
+export type UserUpdateWithoutLecturesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  files?: Prisma.FileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutLecturesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  files?: Prisma.FileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutPostsInput = {
+  id?: string
+  name: string
+  email: string
+  username: string
+  password: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  files?: Prisma.FileCreateNestedManyWithoutUserInput
+  lectures?: Prisma.LectureCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutPostsInput = {
+  id?: string
+  name: string
+  email: string
+  username: string
+  password: string
+  role?: $Enums.Role
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  files?: Prisma.FileUncheckedCreateNestedManyWithoutUserInput
+  lectures?: Prisma.LectureUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutPostsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutPostsInput, Prisma.UserUncheckedCreateWithoutPostsInput>
+}
+
+export type UserUpsertWithoutPostsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutPostsInput, Prisma.UserUncheckedUpdateWithoutPostsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutPostsInput, Prisma.UserUncheckedCreateWithoutPostsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutPostsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutPostsInput, Prisma.UserUncheckedUpdateWithoutPostsInput>
+}
+
+export type UserUpdateWithoutPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  files?: Prisma.FileUpdateManyWithoutUserNestedInput
+  lectures?: Prisma.LectureUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  files?: Prisma.FileUncheckedUpdateManyWithoutUserNestedInput
+  lectures?: Prisma.LectureUncheckedUpdateManyWithoutUserNestedInput
+}
+
+
+/**
+ * Count Type UserCountOutputType
+ */
+
+export type UserCountOutputType = {
+  files: number
+  posts: number
+  lectures: number
+}
+
+export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  files?: boolean | UserCountOutputTypeCountFilesArgs
+  posts?: boolean | UserCountOutputTypeCountPostsArgs
+  lectures?: boolean | UserCountOutputTypeCountLecturesArgs
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserCountOutputType
+   */
+  select?: Prisma.UserCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountFilesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.FileWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PostWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountLecturesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LectureWhereInput
+}
 
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -401,6 +712,10 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   role?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  files?: boolean | Prisma.User$filesArgs<ExtArgs>
+  posts?: boolean | Prisma.User$postsArgs<ExtArgs>
+  lectures?: boolean | Prisma.User$lecturesArgs<ExtArgs>
+  _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
 
@@ -417,10 +732,20 @@ export type UserSelectScalar = {
 }
 
 export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "username" | "password" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  files?: boolean | Prisma.User$filesArgs<ExtArgs>
+  posts?: boolean | Prisma.User$postsArgs<ExtArgs>
+  lectures?: boolean | Prisma.User$lecturesArgs<ExtArgs>
+  _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
+}
 
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
-  objects: {}
+  objects: {
+    files: Prisma.$FilePayload<ExtArgs>[]
+    posts: Prisma.$PostPayload<ExtArgs>[]
+    lectures: Prisma.$LecturePayload<ExtArgs>[]
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     name: string
@@ -770,6 +1095,9 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  files<T extends Prisma.User$filesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$filesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  posts<T extends Prisma.User$postsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$postsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  lectures<T extends Prisma.User$lecturesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$lecturesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LecturePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -824,6 +1152,10 @@ export type UserFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Internal
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter, which User to fetch.
    */
   where: Prisma.UserWhereUniqueInput
@@ -842,6 +1174,10 @@ export type UserFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter, which User to fetch.
    */
   where: Prisma.UserWhereUniqueInput
@@ -859,6 +1195,10 @@ export type UserFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * Filter, which User to fetch.
    */
@@ -908,6 +1248,10 @@ export type UserFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.In
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter, which User to fetch.
    */
   where?: Prisma.UserWhereInput
@@ -955,6 +1299,10 @@ export type UserFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * Filter, which Users to fetch.
    */
@@ -1004,6 +1352,10 @@ export type UserCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * The data needed to create a User.
    */
   data: Prisma.XOR<Prisma.UserCreateInput, Prisma.UserUncheckedCreateInput>
@@ -1032,6 +1384,10 @@ export type UserUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * The data needed to update a User.
    */
@@ -1073,6 +1429,10 @@ export type UserUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * The filter to search for the User to update in case it exists.
    */
   where: Prisma.UserWhereUniqueInput
@@ -1099,6 +1459,10 @@ export type UserDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter which User to delete.
    */
   where: Prisma.UserWhereUniqueInput
@@ -1119,6 +1483,78 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
+ * User.files
+ */
+export type User$filesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the File
+   */
+  select?: Prisma.FileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the File
+   */
+  omit?: Prisma.FileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FileInclude<ExtArgs> | null
+  where?: Prisma.FileWhereInput
+  orderBy?: Prisma.FileOrderByWithRelationInput | Prisma.FileOrderByWithRelationInput[]
+  cursor?: Prisma.FileWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.FileScalarFieldEnum | Prisma.FileScalarFieldEnum[]
+}
+
+/**
+ * User.posts
+ */
+export type User$postsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Post
+   */
+  select?: Prisma.PostSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Post
+   */
+  omit?: Prisma.PostOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PostInclude<ExtArgs> | null
+  where?: Prisma.PostWhereInput
+  orderBy?: Prisma.PostOrderByWithRelationInput | Prisma.PostOrderByWithRelationInput[]
+  cursor?: Prisma.PostWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PostScalarFieldEnum | Prisma.PostScalarFieldEnum[]
+}
+
+/**
+ * User.lectures
+ */
+export type User$lecturesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Lecture
+   */
+  select?: Prisma.LectureSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Lecture
+   */
+  omit?: Prisma.LectureOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LectureInclude<ExtArgs> | null
+  where?: Prisma.LectureWhereInput
+  orderBy?: Prisma.LectureOrderByWithRelationInput | Prisma.LectureOrderByWithRelationInput[]
+  cursor?: Prisma.LectureWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.LectureScalarFieldEnum | Prisma.LectureScalarFieldEnum[]
+}
+
+/**
  * User without action
  */
 export type UserDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1130,4 +1566,8 @@ export type UserDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
 }

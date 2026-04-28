@@ -1,0 +1,37 @@
+model Tag {
+  id          String        @id @default(uuid())
+  name        String        @unique // Уникальное имя тега
+  description String?       // Опциональное описание
+  
+  posts       PostTag[]
+  lectures    LectureTag[]
+  
+  createdAt   DateTime      @default(now()) @map("created_at")
+  updatedAt   DateTime      @updatedAt @map("updated_at")
+  
+  @@map("tags")
+}
+
+// Junction: Post ↔ Tag
+model PostTag {
+  id        String  @id @default(uuid())
+  postId    String
+  post      Post    @relation(fields: [postId], references: [id], onDelete: Cascade)
+  tagId     String
+  tag       Tag     @relation(fields: [tagId], references: [id], onDelete: Cascade)
+  
+  @@unique([postId, tagId]) // Один тег — один раз в посте
+  @@map("post_tags")
+}
+
+// Junction: Lecture ↔ Tag
+model LectureTag {
+  id        String  @id @default(uuid())
+  lectureId String
+  lecture   Lecture @relation(fields: [lectureId], references: [id], onDelete: Cascade)
+  tagId     String
+  tag       Tag     @relation(fields: [tagId], references: [id], onDelete: Cascade)
+  
+  @@unique([lectureId, tagId]) // Один тег — один раз в лекции
+  @@map("lecture_tags")
+}

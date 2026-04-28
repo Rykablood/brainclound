@@ -1,0 +1,18 @@
+model File {
+
+    id          String @id @default(uuid())    
+    url         String
+
+    mimeType    String  @map("mime_type")
+    originalName    String @map("original_name")
+
+    userId      String  @map("user_id")
+    user        User    @relation(fields: [userId], references: [id])
+
+    postFile    PostFile[]
+    lectureFile LectureFile[]
+
+    createdAt   DateTime @default(now()) @map("created_at")
+    updatedAt   DateTime @updatedAt @map("updated_at")
+    @@map("files")
+}

@@ -8,5 +8,14 @@
  *
  * 🟢 You can import this file directly.
  */
+export type * from './models/File.js'
+export type * from './models/Lecture.js'
+export type * from './models/LectureFile.js'
+export type * from './models/LecturePost.js'
+export type * from './models/Post.js'
+export type * from './models/PostFile.js'
+export type * from './models/Tag.js'
+export type * from './models/PostTag.js'
+export type * from './models/LectureTag.js'
 export type * from './models/User.js'
 export type * from './commonInputTypes.js'

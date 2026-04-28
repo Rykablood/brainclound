@@ -51,6 +51,15 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  File: 'File',
+  Lecture: 'Lecture',
+  LectureFile: 'LectureFile',
+  LecturePost: 'LecturePost',
+  Post: 'Post',
+  PostFile: 'PostFile',
+  Tag: 'Tag',
+  PostTag: 'PostTag',
+  LectureTag: 'LectureTag',
   User: 'User'
 } as const
 
@@ -68,6 +77,103 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 } as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+export const FileScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  mimeType: 'mimeType',
+  originalName: 'originalName',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type FileScalarFieldEnum = (typeof FileScalarFieldEnum)[keyof typeof FileScalarFieldEnum]
+
+
+export const LectureScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  text: 'text',
+  preview: 'preview',
+  userId: 'userId',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LectureScalarFieldEnum = (typeof LectureScalarFieldEnum)[keyof typeof LectureScalarFieldEnum]
+
+
+export const LectureFileScalarFieldEnum = {
+  id: 'id',
+  lectureId: 'lectureId',
+  fileId: 'fileId',
+  sortOrder: 'sortOrder'
+} as const
+
+export type LectureFileScalarFieldEnum = (typeof LectureFileScalarFieldEnum)[keyof typeof LectureFileScalarFieldEnum]
+
+
+export const LecturePostScalarFieldEnum = {
+  id: 'id',
+  lectureId: 'lectureId',
+  postId: 'postId',
+  sortOrder: 'sortOrder'
+} as const
+
+export type LecturePostScalarFieldEnum = (typeof LecturePostScalarFieldEnum)[keyof typeof LecturePostScalarFieldEnum]
+
+
+export const PostScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  text: 'text',
+  userId: 'userId',
+  status: 'status'
+} as const
+
+export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]
+
+
+export const PostFileScalarFieldEnum = {
+  id: 'id',
+  postId: 'postId',
+  fileId: 'fileId',
+  sortOrder: 'sortOrder'
+} as const
+
+export type PostFileScalarFieldEnum = (typeof PostFileScalarFieldEnum)[keyof typeof PostFileScalarFieldEnum]
+
+
+export const TagScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TagScalarFieldEnum = (typeof TagScalarFieldEnum)[keyof typeof TagScalarFieldEnum]
+
+
+export const PostTagScalarFieldEnum = {
+  id: 'id',
+  postId: 'postId',
+  tagId: 'tagId'
+} as const
+
+export type PostTagScalarFieldEnum = (typeof PostTagScalarFieldEnum)[keyof typeof PostTagScalarFieldEnum]
+
+
+export const LectureTagScalarFieldEnum = {
+  id: 'id',
+  lectureId: 'lectureId',
+  tagId: 'tagId'
+} as const
+
+export type LectureTagScalarFieldEnum = (typeof LectureTagScalarFieldEnum)[keyof typeof LectureTagScalarFieldEnum]
 
 
 export const UserScalarFieldEnum = {
@@ -90,6 +196,100 @@ export const SortOrder = {
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const FileOrderByRelevanceFieldEnum = {
+  id: 'id',
+  url: 'url',
+  mimeType: 'mimeType',
+  originalName: 'originalName',
+  userId: 'userId'
+} as const
+
+export type FileOrderByRelevanceFieldEnum = (typeof FileOrderByRelevanceFieldEnum)[keyof typeof FileOrderByRelevanceFieldEnum]
+
+
+export const LectureOrderByRelevanceFieldEnum = {
+  id: 'id',
+  title: 'title',
+  text: 'text',
+  preview: 'preview',
+  userId: 'userId'
+} as const
+
+export type LectureOrderByRelevanceFieldEnum = (typeof LectureOrderByRelevanceFieldEnum)[keyof typeof LectureOrderByRelevanceFieldEnum]
+
+
+export const LectureFileOrderByRelevanceFieldEnum = {
+  id: 'id',
+  lectureId: 'lectureId',
+  fileId: 'fileId'
+} as const
+
+export type LectureFileOrderByRelevanceFieldEnum = (typeof LectureFileOrderByRelevanceFieldEnum)[keyof typeof LectureFileOrderByRelevanceFieldEnum]
+
+
+export const LecturePostOrderByRelevanceFieldEnum = {
+  id: 'id',
+  lectureId: 'lectureId',
+  postId: 'postId'
+} as const
+
+export type LecturePostOrderByRelevanceFieldEnum = (typeof LecturePostOrderByRelevanceFieldEnum)[keyof typeof LecturePostOrderByRelevanceFieldEnum]
+
+
+export const PostOrderByRelevanceFieldEnum = {
+  id: 'id',
+  title: 'title',
+  text: 'text',
+  userId: 'userId'
+} as const
+
+export type PostOrderByRelevanceFieldEnum = (typeof PostOrderByRelevanceFieldEnum)[keyof typeof PostOrderByRelevanceFieldEnum]
+
+
+export const PostFileOrderByRelevanceFieldEnum = {
+  id: 'id',
+  postId: 'postId',
+  fileId: 'fileId'
+} as const
+
+export type PostFileOrderByRelevanceFieldEnum = (typeof PostFileOrderByRelevanceFieldEnum)[keyof typeof PostFileOrderByRelevanceFieldEnum]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const TagOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description'
+} as const
+
+export type TagOrderByRelevanceFieldEnum = (typeof TagOrderByRelevanceFieldEnum)[keyof typeof TagOrderByRelevanceFieldEnum]
+
+
+export const PostTagOrderByRelevanceFieldEnum = {
+  id: 'id',
+  postId: 'postId',
+  tagId: 'tagId'
+} as const
+
+export type PostTagOrderByRelevanceFieldEnum = (typeof PostTagOrderByRelevanceFieldEnum)[keyof typeof PostTagOrderByRelevanceFieldEnum]
+
+
+export const LectureTagOrderByRelevanceFieldEnum = {
+  id: 'id',
+  lectureId: 'lectureId',
+  tagId: 'tagId'
+} as const
+
+export type LectureTagOrderByRelevanceFieldEnum = (typeof LectureTagOrderByRelevanceFieldEnum)[keyof typeof LectureTagOrderByRelevanceFieldEnum]
 
 
 export const UserOrderByRelevanceFieldEnum = {

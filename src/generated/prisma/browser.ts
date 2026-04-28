@@ -18,6 +18,51 @@ export { Prisma }
 export * as $Enums from './enums.js'
 export * from './enums.js';
 /**
+ * Model File
+ * 
+ */
+export type File = Prisma.FileModel
+/**
+ * Model Lecture
+ * 
+ */
+export type Lecture = Prisma.LectureModel
+/**
+ * Model LectureFile
+ * 
+ */
+export type LectureFile = Prisma.LectureFileModel
+/**
+ * Model LecturePost
+ * 
+ */
+export type LecturePost = Prisma.LecturePostModel
+/**
+ * Model Post
+ * 
+ */
+export type Post = Prisma.PostModel
+/**
+ * Model PostFile
+ * 
+ */
+export type PostFile = Prisma.PostFileModel
+/**
+ * Model Tag
+ * 
+ */
+export type Tag = Prisma.TagModel
+/**
+ * Model PostTag
+ * 
+ */
+export type PostTag = Prisma.PostTagModel
+/**
+ * Model LectureTag
+ * 
+ */
+export type LectureTag = Prisma.LectureTagModel
+/**
  * Model User
  * 
  */

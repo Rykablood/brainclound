@@ -1,0 +1,41 @@
+model Post {
+    id      String @id @default(uuid())
+
+    title   String
+    text    String
+
+
+    userId  String  @map("user_id")
+    user    User    @relation(fields: [userId], references: [id])
+
+    files   PostFile[]
+    lectures LecturePost[]
+    tags PostTag[]
+    
+    status Status   @default(PREVIEW)
+
+    @@map("posts")
+}
+
+model PostFile {
+    id  String @id @default(uuid())
+
+    postId String
+    post   Post @relation(fields: [postId], references: [id], onDelete: Cascade) 
+    
+    fileId String
+    file   File @relation(fields: [fileId], references: [id], onDelete: Cascade) 
+    
+    sortOrder   Int    @default(0)
+    @@unique([postId, fileId]) // Один файл — только один раз в посте
+    @@map("post_files")
+}
+
+enum Status {
+    // Рассматривается 
+    PREVIEW
+    // Отклонён
+    REJECTED
+    // Одобрен
+    APPROVED
+}

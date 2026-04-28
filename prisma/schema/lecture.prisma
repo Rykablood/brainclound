@@ -1,0 +1,52 @@
+// === ЛЕКЦИИ ===
+model Lecture {
+  id        String         @id @default(uuid())
+  title     String
+  text      String
+  preview   String         // URL обложки (png/jpg/webp)
+  
+  userId    String         @map("user_id")
+  user      User           @relation(fields: [userId], references: [id])
+  
+  status    Status        @default(PREVIEW)
+
+  files     LectureFile[]  // Связь с файлами через junction-таблицу
+  posts     LecturePost[]  // Связь с постами через junction-таблицу
+  tags      LectureTag[]
+  
+  createdAt DateTime       @default(now()) @map("created_at")
+  updatedAt DateTime       @updatedAt @map("updated_at")
+  
+  @@map("lectures")
+}
+
+// Junction-таблица: лекция ↔ файл (аналогично PostFile)
+model LectureFile {
+  id        String   @id @default(uuid())
+  
+  lectureId String
+  lecture   Lecture  @relation(fields: [lectureId], references: [id], onDelete: Cascade)
+  
+  fileId    String
+  file      File     @relation(fields: [fileId], references: [id], onDelete: Cascade)
+  
+  sortOrder Int      @default(0) @map("sort_order")
+  
+  @@unique([lectureId, fileId]) // Один файл — только один раз в лекции
+  @@map("lecture_files")
+}
+
+model LecturePost {
+  id        String   @id @default(uuid())
+  
+  lectureId String
+  lecture   Lecture  @relation(fields: [lectureId], references: [id], onDelete: Cascade)
+  
+  postId    String   @map("post_id")
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  
+  sortOrder Int      @default(0) @map("sort_order")
+  
+  @@unique([lectureId, postId]) // Один пост — только один раз в лекции
+  @@map("lecture_posts")
+}
