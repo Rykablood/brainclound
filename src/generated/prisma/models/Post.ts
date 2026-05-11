@@ -30,6 +30,8 @@ export type PostMinAggregateOutputType = {
   text: string | null
   userId: string | null
   status: $Enums.Status | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type PostMaxAggregateOutputType = {
@@ -38,6 +40,8 @@ export type PostMaxAggregateOutputType = {
   text: string | null
   userId: string | null
   status: $Enums.Status | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type PostCountAggregateOutputType = {
@@ -46,6 +50,8 @@ export type PostCountAggregateOutputType = {
   text: number
   userId: number
   status: number
+  createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -56,6 +62,8 @@ export type PostMinAggregateInputType = {
   text?: true
   userId?: true
   status?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type PostMaxAggregateInputType = {
@@ -64,6 +72,8 @@ export type PostMaxAggregateInputType = {
   text?: true
   userId?: true
   status?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type PostCountAggregateInputType = {
@@ -72,6 +82,8 @@ export type PostCountAggregateInputType = {
   text?: true
   userId?: true
   status?: true
+  createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -153,6 +165,8 @@ export type PostGroupByOutputType = {
   text: string
   userId: string
   status: $Enums.Status
+  createdAt: Date
+  updatedAt: Date
   _count: PostCountAggregateOutputType | null
   _min: PostMinAggregateOutputType | null
   _max: PostMaxAggregateOutputType | null
@@ -182,6 +196,8 @@ export type PostWhereInput = {
   text?: Prisma.StringFilter<"Post"> | string
   userId?: Prisma.StringFilter<"Post"> | string
   status?: Prisma.EnumStatusFilter<"Post"> | $Enums.Status
+  createdAt?: Prisma.DateTimeFilter<"Post"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Post"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   files?: Prisma.PostFileListRelationFilter
   lectures?: Prisma.LecturePostListRelationFilter
@@ -194,6 +210,8 @@ export type PostOrderByWithRelationInput = {
   text?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
   files?: Prisma.PostFileOrderByRelationAggregateInput
   lectures?: Prisma.LecturePostOrderByRelationAggregateInput
@@ -210,6 +228,8 @@ export type PostWhereUniqueInput = Prisma.AtLeast<{
   text?: Prisma.StringFilter<"Post"> | string
   userId?: Prisma.StringFilter<"Post"> | string
   status?: Prisma.EnumStatusFilter<"Post"> | $Enums.Status
+  createdAt?: Prisma.DateTimeFilter<"Post"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Post"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   files?: Prisma.PostFileListRelationFilter
   lectures?: Prisma.LecturePostListRelationFilter
@@ -222,6 +242,8 @@ export type PostOrderByWithAggregationInput = {
   text?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.PostCountOrderByAggregateInput
   _max?: Prisma.PostMaxOrderByAggregateInput
   _min?: Prisma.PostMinOrderByAggregateInput
@@ -236,6 +258,8 @@ export type PostScalarWhereWithAggregatesInput = {
   text?: Prisma.StringWithAggregatesFilter<"Post"> | string
   userId?: Prisma.StringWithAggregatesFilter<"Post"> | string
   status?: Prisma.EnumStatusWithAggregatesFilter<"Post"> | $Enums.Status
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Post"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Post"> | Date | string
 }
 
 export type PostCreateInput = {
@@ -243,6 +267,8 @@ export type PostCreateInput = {
   title: string
   text: string
   status?: $Enums.Status
+  createdAt?: Date | string
+  updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutPostsInput
   files?: Prisma.PostFileCreateNestedManyWithoutPostInput
   lectures?: Prisma.LecturePostCreateNestedManyWithoutPostInput
@@ -255,6 +281,8 @@ export type PostUncheckedCreateInput = {
   text: string
   userId: string
   status?: $Enums.Status
+  createdAt?: Date | string
+  updatedAt?: Date | string
   files?: Prisma.PostFileUncheckedCreateNestedManyWithoutPostInput
   lectures?: Prisma.LecturePostUncheckedCreateNestedManyWithoutPostInput
   tags?: Prisma.PostTagUncheckedCreateNestedManyWithoutPostInput
@@ -265,6 +293,8 @@ export type PostUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   text?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
   files?: Prisma.PostFileUpdateManyWithoutPostNestedInput
   lectures?: Prisma.LecturePostUpdateManyWithoutPostNestedInput
@@ -277,6 +307,8 @@ export type PostUncheckedUpdateInput = {
   text?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   files?: Prisma.PostFileUncheckedUpdateManyWithoutPostNestedInput
   lectures?: Prisma.LecturePostUncheckedUpdateManyWithoutPostNestedInput
   tags?: Prisma.PostTagUncheckedUpdateManyWithoutPostNestedInput
@@ -288,6 +320,8 @@ export type PostCreateManyInput = {
   text: string
   userId: string
   status?: $Enums.Status
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type PostUpdateManyMutationInput = {
@@ -295,6 +329,8 @@ export type PostUpdateManyMutationInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   text?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type PostUncheckedUpdateManyInput = {
@@ -303,6 +339,8 @@ export type PostUncheckedUpdateManyInput = {
   text?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type PostScalarRelationFilter = {
@@ -322,6 +360,8 @@ export type PostCountOrderByAggregateInput = {
   text?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type PostMaxOrderByAggregateInput = {
@@ -330,6 +370,8 @@ export type PostMaxOrderByAggregateInput = {
   text?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type PostMinOrderByAggregateInput = {
@@ -338,6 +380,8 @@ export type PostMinOrderByAggregateInput = {
   text?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type PostListRelationFilter = {
@@ -439,6 +483,8 @@ export type PostCreateWithoutLecturesInput = {
   title: string
   text: string
   status?: $Enums.Status
+  createdAt?: Date | string
+  updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutPostsInput
   files?: Prisma.PostFileCreateNestedManyWithoutPostInput
   tags?: Prisma.PostTagCreateNestedManyWithoutPostInput
@@ -450,6 +496,8 @@ export type PostUncheckedCreateWithoutLecturesInput = {
   text: string
   userId: string
   status?: $Enums.Status
+  createdAt?: Date | string
+  updatedAt?: Date | string
   files?: Prisma.PostFileUncheckedCreateNestedManyWithoutPostInput
   tags?: Prisma.PostTagUncheckedCreateNestedManyWithoutPostInput
 }
@@ -475,6 +523,8 @@ export type PostUpdateWithoutLecturesInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   text?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
   files?: Prisma.PostFileUpdateManyWithoutPostNestedInput
   tags?: Prisma.PostTagUpdateManyWithoutPostNestedInput
@@ -486,6 +536,8 @@ export type PostUncheckedUpdateWithoutLecturesInput = {
   text?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   files?: Prisma.PostFileUncheckedUpdateManyWithoutPostNestedInput
   tags?: Prisma.PostTagUncheckedUpdateManyWithoutPostNestedInput
 }
@@ -495,6 +547,8 @@ export type PostCreateWithoutFilesInput = {
   title: string
   text: string
   status?: $Enums.Status
+  createdAt?: Date | string
+  updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutPostsInput
   lectures?: Prisma.LecturePostCreateNestedManyWithoutPostInput
   tags?: Prisma.PostTagCreateNestedManyWithoutPostInput
@@ -506,6 +560,8 @@ export type PostUncheckedCreateWithoutFilesInput = {
   text: string
   userId: string
   status?: $Enums.Status
+  createdAt?: Date | string
+  updatedAt?: Date | string
   lectures?: Prisma.LecturePostUncheckedCreateNestedManyWithoutPostInput
   tags?: Prisma.PostTagUncheckedCreateNestedManyWithoutPostInput
 }
@@ -531,6 +587,8 @@ export type PostUpdateWithoutFilesInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   text?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
   lectures?: Prisma.LecturePostUpdateManyWithoutPostNestedInput
   tags?: Prisma.PostTagUpdateManyWithoutPostNestedInput
@@ -542,6 +600,8 @@ export type PostUncheckedUpdateWithoutFilesInput = {
   text?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   lectures?: Prisma.LecturePostUncheckedUpdateManyWithoutPostNestedInput
   tags?: Prisma.PostTagUncheckedUpdateManyWithoutPostNestedInput
 }
@@ -551,6 +611,8 @@ export type PostCreateWithoutTagsInput = {
   title: string
   text: string
   status?: $Enums.Status
+  createdAt?: Date | string
+  updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutPostsInput
   files?: Prisma.PostFileCreateNestedManyWithoutPostInput
   lectures?: Prisma.LecturePostCreateNestedManyWithoutPostInput
@@ -562,6 +624,8 @@ export type PostUncheckedCreateWithoutTagsInput = {
   text: string
   userId: string
   status?: $Enums.Status
+  createdAt?: Date | string
+  updatedAt?: Date | string
   files?: Prisma.PostFileUncheckedCreateNestedManyWithoutPostInput
   lectures?: Prisma.LecturePostUncheckedCreateNestedManyWithoutPostInput
 }
@@ -587,6 +651,8 @@ export type PostUpdateWithoutTagsInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   text?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
   files?: Prisma.PostFileUpdateManyWithoutPostNestedInput
   lectures?: Prisma.LecturePostUpdateManyWithoutPostNestedInput
@@ -598,6 +664,8 @@ export type PostUncheckedUpdateWithoutTagsInput = {
   text?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   files?: Prisma.PostFileUncheckedUpdateManyWithoutPostNestedInput
   lectures?: Prisma.LecturePostUncheckedUpdateManyWithoutPostNestedInput
 }
@@ -607,6 +675,8 @@ export type PostCreateWithoutUserInput = {
   title: string
   text: string
   status?: $Enums.Status
+  createdAt?: Date | string
+  updatedAt?: Date | string
   files?: Prisma.PostFileCreateNestedManyWithoutPostInput
   lectures?: Prisma.LecturePostCreateNestedManyWithoutPostInput
   tags?: Prisma.PostTagCreateNestedManyWithoutPostInput
@@ -617,6 +687,8 @@ export type PostUncheckedCreateWithoutUserInput = {
   title: string
   text: string
   status?: $Enums.Status
+  createdAt?: Date | string
+  updatedAt?: Date | string
   files?: Prisma.PostFileUncheckedCreateNestedManyWithoutPostInput
   lectures?: Prisma.LecturePostUncheckedCreateNestedManyWithoutPostInput
   tags?: Prisma.PostTagUncheckedCreateNestedManyWithoutPostInput
@@ -657,6 +729,8 @@ export type PostScalarWhereInput = {
   text?: Prisma.StringFilter<"Post"> | string
   userId?: Prisma.StringFilter<"Post"> | string
   status?: Prisma.EnumStatusFilter<"Post"> | $Enums.Status
+  createdAt?: Prisma.DateTimeFilter<"Post"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Post"> | Date | string
 }
 
 export type PostCreateManyUserInput = {
@@ -664,6 +738,8 @@ export type PostCreateManyUserInput = {
   title: string
   text: string
   status?: $Enums.Status
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type PostUpdateWithoutUserInput = {
@@ -671,6 +747,8 @@ export type PostUpdateWithoutUserInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   text?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   files?: Prisma.PostFileUpdateManyWithoutPostNestedInput
   lectures?: Prisma.LecturePostUpdateManyWithoutPostNestedInput
   tags?: Prisma.PostTagUpdateManyWithoutPostNestedInput
@@ -681,6 +759,8 @@ export type PostUncheckedUpdateWithoutUserInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   text?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   files?: Prisma.PostFileUncheckedUpdateManyWithoutPostNestedInput
   lectures?: Prisma.LecturePostUncheckedUpdateManyWithoutPostNestedInput
   tags?: Prisma.PostTagUncheckedUpdateManyWithoutPostNestedInput
@@ -691,6 +771,8 @@ export type PostUncheckedUpdateManyWithoutUserInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   text?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -748,6 +830,8 @@ export type PostSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   text?: boolean
   userId?: boolean
   status?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   files?: boolean | Prisma.Post$filesArgs<ExtArgs>
   lectures?: boolean | Prisma.Post$lecturesArgs<ExtArgs>
@@ -763,9 +847,11 @@ export type PostSelectScalar = {
   text?: boolean
   userId?: boolean
   status?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type PostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "text" | "userId" | "status", ExtArgs["result"]["post"]>
+export type PostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "text" | "userId" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["post"]>
 export type PostInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   files?: boolean | Prisma.Post$filesArgs<ExtArgs>
@@ -788,6 +874,8 @@ export type $PostPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     text: string
     userId: string
     status: $Enums.Status
+    createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["post"]>
   composites: {}
 }
@@ -1166,6 +1254,8 @@ export interface PostFieldRefs {
   readonly text: Prisma.FieldRef<"Post", 'String'>
   readonly userId: Prisma.FieldRef<"Post", 'String'>
   readonly status: Prisma.FieldRef<"Post", 'Status'>
+  readonly createdAt: Prisma.FieldRef<"Post", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"Post", 'DateTime'>
 }
     
 

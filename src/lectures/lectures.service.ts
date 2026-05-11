@@ -1,11 +1,14 @@
 import {
   BadRequestException,
+  ForbiddenException,
   Injectable,
   NotFoundException,
 } from "@nestjs/common";
 import { PrismaService } from "src/prisma.service";
 import { CreateLectureDto } from "./dto/create-lecture.dto";
 import { FindAllLecturesDto } from "./dto/find-all-lectures.dto";
+import { FindLectureByContentDto } from "./dto/findByContent-lectures.dto";
+import { GetLatestLecturesDto } from "./dto/get-latest-lectures.dto";
 
 @Injectable()
 export class LecturesService {
@@ -247,6 +250,198 @@ export class LecturesService {
       tags: lecture.tags.map((t) => t.tag.name),
     };
   }
+  async remove(userId: string, lectureId: string) {
+    const lecture = await this.prisma.lecture.findUnique({
+      where: { id: lectureId },
+      select: { userId: true },
+    });
+
+    if (!lecture) {
+      throw new NotFoundException("Пост не найден");
+    }
+
+    const currentUser = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: { role: true },
+    });
+
+    if (!currentUser) {
+      throw new NotFoundException("Пользователь не найден");
+    }
+
+    const isAuthor = lecture.userId === userId;
+    const isAdmin = currentUser.role === "ADMIN";
+    const isDeveloper = currentUser.role === "DEVELOPER";
+
+    if (!isAuthor && !isAdmin && !isDeveloper) {
+      throw new ForbiddenException("Недостаточно прав для удаления поста");
+    }
+
+    await this.prisma.lecture.delete({
+      where: { id: lectureId },
+    });
+
+    // Возвращаем void — контроллер отправит 204 No Content
+  }
+
+  async getLastLectures() {
+    const lectures = await this.prisma.lecture.findMany({
+      where: {
+        status: "APPROVED",
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+      take: 3,
+
+      select: {
+        id: true,
+        title: true,
+        preview: true,
+        user: {
+          select: {
+            name: true,
+            username: true,
+          },
+        },
+
+        _count: {
+          select: { files: true, posts: true },
+        },
+
+        tags: {
+          select: {
+            tag: {
+              select: { name: true },
+            },
+          },
+        },
+      },
+    });
+
+    return lectures.map((lecture) => ({
+      id: lecture.id,
+      title: lecture.title,
+      preview: lecture.preview,
+      author: {
+        name: lecture.user.name,
+        username: lecture.user.username,
+      },
+      filesCount: lecture._count.files,
+      postsCount: lecture._count.posts,
+      tags: lecture.tags.map((t) => t.tag.name),
+    }));
+  }
+
+  async findByContent(dto: FindLectureByContentDto) {
+    const { content } = dto;
+
+    const where: any = {
+      status: "APPROVED",
+    };
+
+    if (content?.trim()) {
+      const search = content.trim();
+
+      where.OR = [
+        // Поиск по заголовку
+        { title: { contains: search } },
+        // Поиск по тексту поста
+        { text: { contains: search } },
+        // Поиск по тегам (хотя бы один тег совпадает)
+        {
+          tags: {
+            some: { tag: { name: { contains: search } } },
+          },
+        },
+        // Поиск по имени автора
+        { user: { name: { contains: search } } },
+        { user: { username: { contains: search } } },
+      ];
+    }
+
+    const lectures = await this.prisma.lecture.findMany({
+      where,
+      take: 20,
+      select: {
+        id: true,
+        title: true,
+        preview: true,
+        user: {
+          select: {
+            name: true,
+            username: true,
+          },
+        },
+
+        _count: {
+          select: { files: true, posts: true },
+        },
+
+        tags: {
+          select: {
+            tag: {
+              select: { name: true },
+            },
+          },
+        },
+      },
+    });
+
+    return lectures.map((lecture) => ({
+      id: lecture.id,
+      preview: lecture.preview,
+      authorName: lecture.user.name,
+      authorUsername: lecture.user.username,
+      filesCount: lecture._count.files,
+      postsCount: lecture._count.posts,
+      title: lecture.title,
+      tags: lecture.tags.map((t) => t.tag.name),
+    }));
+  }
+
+  async getLatest(dto: GetLatestLecturesDto) {
+    const { skip = 0, take = 25 } = dto;
+
+    const lectures = await this.prisma.lecture.findMany({
+      where: {
+        status: "APPROVED", // Только одобренные
+      },
+      orderBy: {
+        createdAt: "desc", // Сначала новые
+      },
+      skip,
+      take,
+      select: {
+        id: true,
+        title: true,
+        preview: true,
+        user: {
+          select: { name: true, username: true },
+        },
+        _count: {
+          select: { files: true, posts: true },
+        },
+        tags: {
+          select: {
+            tag: { select: { name: true } },
+          },
+        },
+      },
+    });
+
+    return lectures.map((lec) => ({
+      id: lec.id,
+      title: lec.title,
+      preview: lec.preview,
+      authorName: lec.user.name,
+      authorUsername: lec.user.username,
+      filesCount: lec._count.files,
+      postsCount: lec._count.posts,
+      tags: lec.tags.map((t) => t.tag.name),
+    }));
+  }
+
   private async upsertTags(tx: any, tagNames: string[]) {
     const tags = await Promise.all(
       tagNames.map((name) =>

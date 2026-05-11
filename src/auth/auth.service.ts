@@ -184,8 +184,4 @@ export class AuthService {
 
     return user;
   }
-
-  async me(id: string) {
-    return await this.prismaService.user.findUnique({ where: { id } });
-  }
 }

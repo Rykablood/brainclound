@@ -1,9 +1,9 @@
 // === ЛЕКЦИИ ===
 model Lecture {
   id        String         @id @default(uuid())
-  title     String
-  text      String
-  preview   String         // URL обложки (png/jpg/webp)
+  title     String         @db.LongText()
+  text      String         @db.LongText()
+  preview   String         @db.LongText()
   
   userId    String         @map("user_id")
   user      User           @relation(fields: [userId], references: [id])

@@ -8,6 +8,8 @@ import { PrismaService } from "./prisma.service";
 import { S3Module } from "./s3/s3.module";
 import { UploadModule } from './upload/upload.module';
 import { LecturesModule } from './lectures/lectures.module';
+import { ProfileModule } from './profile/profile.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -20,6 +22,8 @@ import { LecturesModule } from './lectures/lectures.module';
     PostsModule,
     UploadModule,
     LecturesModule,
+    ProfileModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService],

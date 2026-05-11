@@ -1,7 +1,7 @@
 model File {
 
     id          String @id @default(uuid())    
-    url         String
+    url         String    @db.VarChar(2048) 
 
     mimeType    String  @map("mime_type")
     originalName    String @map("original_name")
